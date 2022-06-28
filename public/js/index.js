@@ -1,4 +1,6 @@
 //--------------------Products Client--------------------
+const clientProducts = () =>{
+console.log(`ejecutando`);
 const boxProd= document.getElementById('box-products-client')
 fetch('http://localhost:8080/api/products/')
 .then(response => response.json())
@@ -25,6 +27,7 @@ fetch('http://localhost:8080/api/products/')
 
     boxProd.innerHTML = respStringAll
 })
+}
 
 //--------------------Products admin--------------------
 const tableProd= document.getElementById('table-products-admin')
