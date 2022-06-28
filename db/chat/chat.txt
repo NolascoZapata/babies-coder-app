@@ -1,1 +1,1 @@
-[{"author":{"id":"","nombre":"[object Object]","apellido":"","edad":"","alias":"","avatar":"","date":"21:45 - 27/6/2022 "},"text":""}]
+[{"author":{"id":"client@gmail.com","nombre":"","apellido":"","edad":"","alias":"","avatar":"","date":"1:9 - 28/6/2022 "},"text":"Hola!"}]

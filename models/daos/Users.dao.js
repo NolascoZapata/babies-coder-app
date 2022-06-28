@@ -60,7 +60,7 @@ class UsersDao extends MongoDBContainer {
 
     async getByEmail(email) {
         try {
-            const document = await this.model.findOne({ email }, { __v: 0 }).populate('accounts');
+            const document = await this.model.findOne({ email }, { __v: 0 });
             if (!document) {
                 const errorMessage = `Wrong username`;
                 throw new Error(JSON.stringify(errorMessage));

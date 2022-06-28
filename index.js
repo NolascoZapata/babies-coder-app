@@ -75,8 +75,9 @@ app.get('/logout',auth,(req,res)=>{
 	res.redirect('/')
 })
 app.get('/chat',auth, function (req, res) {
-	const isAdmin =  req.user.isAdmin
 	const user = req.user
+	let isAdmin
+	req.user.isAdmin === "true" ? isAdmin=true : isAdmin= false;
 	res.render('pages/chat',{isAdmin,user});
 })
 app.get('/signup-error',(req,res)=>{
@@ -87,10 +88,11 @@ app.get('/signin-error',(req,res)=>{
 })
 
 app.get('/home', auth , function (req, res) {
-	const isAdmin =  req.user.isAdmin
 	const user = req.user
-	console.log(isAdmin);
-	res.render('pages/home',{user, isAdmin});
+	let isAdmin
+	req.user.isAdmin === "true" ? isAdmin=true : isAdmin= false;
+	
+	res.render('pages/home',{user,isAdmin});
 })
 app.get('/newProduct',auth, (req, res)=>{
 	const isAdmin = req.user.isAdmin
