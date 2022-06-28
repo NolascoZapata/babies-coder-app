@@ -1,0 +1,32 @@
+<h3>Available products</h3>
+
+<% if (!isAdmin){ %>
+<div id="box-products-client" class="row row-cols-1 row-cols-sm-3 row-cols-md-4 box-prod-client"></div>
+
+<% } else { %>
+<div style="max-width:700px ; width: 100%; margin: 50px auto 0px;">
+  <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Add a new Product</button>
+  <h4 class="mt-4">Products table</h4>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Size</th>
+        <th scope="col">Stock</th>
+        <th scope="col">Category</th>
+        <th scope="col">Image</th>
+      </tr>
+    </thead>
+    <tbody id="table-products-admin">
+    </tbody>
+  </table>
+</div>
+
+<!-- New Product Modal-->
+<%- include ('./modal-NewProd') %>
+
+<!-- Update Modal -->
+<%- include ('./modal-Update') %>
+
+<% } %>

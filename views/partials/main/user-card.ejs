@@ -1,0 +1,24 @@
+<% if (user) { %>
+<div class="d-flex justify-content-center">
+  <div class="card" style="width: 18rem">
+    <img src="<%= user.userAvatar %>" class="card-img-top" alt="..." />
+    <div class="card-body">
+      <h5 class="card-title"><%= user.name %><small> // Admin : <%= isAdmin %></small></h5>
+      <p class="card-text">
+        Email: <%= user.email %>
+      </p>
+      <p class="card-text">
+        Member since : <%= user.createdAt %>
+      </p>
+      <p class="card-text">
+        <small>
+          <i>Last update: <%= user.updatedAt %></i>
+        </small> 
+      </p>
+
+      <a href="#" class="btn btn-primary">Edit data</a>
+      <a href="#" class="btn btn-primary">Orders</a>
+    </div>
+  </div>
+</div>
+<% } %>

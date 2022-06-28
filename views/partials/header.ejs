@@ -1,0 +1,46 @@
+<% if(isAdmin) { %>
+<nav class="navbar navbar-expand-lg navbar-light nav-bar">
+  <a class="navbar-brand" href="/home"><img width="100px" src="https://i.ibb.co/5284vPr/paginainicio.jpg" alt="logo"></a>
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item">
+      <a class="nav-link" href="/home">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/profile">Profile</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/chat">Chat</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="">Orders</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="">Users</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/logout">Log Out</a>
+    </li>
+  </ul>
+</nav>
+<% }else{ %>
+<nav class="navbar navbar-expand-lg navbar-light nav-bar">
+  <a class="navbar-brand" href="/home"><img width="100px" src="https://i.ibb.co/5284vPr/paginainicio.jpg" alt="logo"></a>
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item">
+      <a class="nav-link" href="/home">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/profile">Profile</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/chat">Chat</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/cart">Cart</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/logout">Log Out</a>
+    </li>
+  </ul>
+</nav>
+<% } %>

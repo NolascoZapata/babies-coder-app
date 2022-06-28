@@ -1,0 +1,32 @@
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">New Product</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="d-flex flex-column align-items-center mt-3" action="/api/products/" method="post">
+          <h2 class="text-secondary">New Product</h2>
+          <input type="text" name="name" id="newProdName" placeholder="Name" required>
+          <input class="mt-3" type="text" name="price" id="newProdPrice" placeholder="Price" required>
+          <input class="mt-3" type="text" name="stock" id="newProdStock" placeholder="Stock" required>
+          <label class="mt-3" for="newProdSize">Size</label>
+          <select style="width: 27%;" name="size" id="newProdSize" class="form-control" required>
+            <option value='0-3 months'>0-3 months</option>
+            <option value='6-9 months'>6-9 months'</option>
+            <option value='9-12 months'>9-12 months</option>
+          </select>
+          <label class="mt-3" for="newProdCategory">Category</label>
+          <select style="width: 27%;" name="category" id="newProdCategory" class="form-control" required>
+            <option value='baby'>Baby</option>
+            <option value='girl'>Girl</option>
+            <option value='boy'>Boy</option>
+          </select>
+          <input class="mt-3" type="text" name="imgDir" id="newProdImg" placeholder="Url image" required>
+          <button type="submit" class="btn btn-secondary mt-2">Add new Product</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
