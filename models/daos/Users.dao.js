@@ -1,4 +1,5 @@
 const { generateAccount } = require('../../utils/accounts.utils');
+const notifMailAdmin = require('../../utils/gmail.utils');
 const { generateCart } = require('./../../utils/cart.utils')
 const MongoDBContainer = require('./../containers/Mongodb.container');
 const UserSchema = require('./../schemas/User.schema');
@@ -33,6 +34,7 @@ class UsersDao extends MongoDBContainer {
             user.cart = [cart._id]
             user.accounts = [account._id];
             await user.save();
+            notifMailAdmin(`New user registered !`, `${user.email} just registed !`)
             return user;
         } catch (error) {
             throw new Error(error.message);

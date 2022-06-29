@@ -9,13 +9,13 @@ const fs = require('fs')
 const session = require('express-session')
 const MongoStore = require('connect-mongo');
 const passport = require('passport')
+const cluster = require('cluster')
+const os = require('os')
 require('dotenv').config()
 /////////
 const ProdDao = require('./models/daos/Product.dao')
 const products = new ProdDao()
 /////////
-
-const PORT = process.env.PORT || 8080;
 
 //--------------------Middlewares--------------------
 app.use(cors())
@@ -172,5 +172,32 @@ const emitirChat = () => {
 })();
 
 
+const PORT = parseInt(process.argv[2]) || 8080
+const modoCluster = process.argv[3] == 'CLUSTER'
 
-server.listen(PORT, () => console.log(`Servidor montado en ${PORT}`))
+
+if (modoCluster && cluster.is) {
+    const numCPUs = os.cpus().length
+
+    console.log(`Número de procesadores: ${numCPUs}`)
+    console.log(`PID MASTER ${process.pid}`)
+
+    for (let i = 0; i < numCPUs; i++) {
+        cluster.fork()
+    }
+
+    cluster.on('exit', worker => {
+        console.log('Worker', worker.process.pid, 'exited', new Date().toLocaleString())
+        cluster.fork()
+    })
+} else {
+
+    console.log("Worker process iniciado");
+        const runningServer = server.listen(PORT,()=>{
+            console.log(`El servidor esta montado en el puerto ${PORT}`);
+            
+        })
+        runningServer.on("error", (error)=>{
+            console.log(error);
+        })
+}

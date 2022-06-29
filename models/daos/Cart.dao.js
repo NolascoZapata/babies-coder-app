@@ -8,21 +8,21 @@ class CartsDao extends MongoDBContainer {
     constructor() {
         super(collection, CartSchema);
         if (!CartsDao.instance) {
-          CartsDao.instance = this;
+            CartsDao.instance = this;
             return this;
         } else {
             return CartsDao.instance;
         }
     }
     async createCart(cartItem) {
-      try {
-          const cart = await this.createItem(cartItem);
-          await cart.save()
-          return cart;
-      } catch (error) {
-          throw new Error(error.message);
-      }
-  }
+        try {
+            const cart = await this.createItem(cartItem);
+            await cart.save()
+            return cart;
+        } catch (error) {
+            throw new Error(error.message);
+        }
+    }
 };
 
 module.exports = CartsDao;
