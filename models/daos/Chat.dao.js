@@ -21,7 +21,7 @@ class ChatsDao extends MongoDBContainer {
             await chat.save();
             return chat;
         } catch (error) {
-            throw new Error(error);
+            logger.log('error',error.message)
         }
 
     };
@@ -36,7 +36,7 @@ class ChatsDao extends MongoDBContainer {
                 return document;
             }
         } catch (error) {
-            throw new Error(JSON.stringify(error));
+            logger.log('error',error.message)
         }
     }
 
@@ -49,7 +49,7 @@ class ChatsDao extends MongoDBContainer {
                 return document;
             }
         } catch (error) {
-            throw new Error(JSON.stringify(error));
+            logger.log('error',error.message)
         }
     }
 };

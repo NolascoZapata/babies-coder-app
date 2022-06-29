@@ -2,9 +2,14 @@
     margin: 0;
     padding: 0 auto;
     box-sizing: border-box;
+    font-family:sans-serif
 }
+
 header .nav-bar{
     margin-bottom: 2rem;
+}
+header .nav-link {
+    font-size: 1.3rem;
 }
 
 main .box-prod-client{

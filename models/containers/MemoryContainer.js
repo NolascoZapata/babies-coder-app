@@ -1,4 +1,5 @@
-const { v4 : uuid } = require('uuid')
+const { v4 : uuid } = require('uuid');
+const { logger } = require('../../log/logger');
 
 
 class MemoryContainer {
@@ -13,7 +14,7 @@ class MemoryContainer {
     getById(id){
         const item = this.item.find(it=>it.id===id)
         if (!item) {
-            throw new Error (`${this.resource} con id ${id} no existe en nuestros registros`)
+            logger.log('error',`${this.resource} with id ${id} does not exists in our records`)
         }
         return item
     }
@@ -33,7 +34,7 @@ class MemoryContainer {
     update(id,item){
         const index = this.items.findIndex(it=>it.id===+id)
         if (index<0) {
-            throw new Error (`${this.resource} con id ${id} no existe en nuestros registros`)
+            logger.log('error',`${this.resource} with id ${id} does not exists in our records`)
         }
 
         const updatedItem ={
@@ -49,7 +50,7 @@ class MemoryContainer {
     deleteById(id){
         const index = this.items.findIndex(it=>it.id===+id)
         if (index<0) {
-            throw new Error (`${this.resource} con id ${id} no existe en nuestros registros`)
+            logger.log('error',`${this.resource} with id ${id} does not exists in our records`)
         }
         return this.items.splice(index,1)
     }

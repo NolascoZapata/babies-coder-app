@@ -11,6 +11,7 @@ const MongoStore = require('connect-mongo');
 const passport = require('passport')
 const cluster = require('cluster')
 const os = require('os')
+const { logger } = require('./log/logger');
 require('dotenv').config()
 /////////
 const ProdDao = require('./models/daos/Product.dao')
@@ -71,7 +72,7 @@ app.get('/logout',auth,(req,res)=>{
 			return next(err)
 		}
 		})
-	console.log(`User log out`);
+	logger.log('info', `User log out`);
 	res.redirect('/')
 })
 app.get('/chat',auth, function (req, res) {
@@ -105,7 +106,7 @@ app.get('/products/:id',auth, async (req, res)=>{
 		const prod = await products.getById(id)
 		res.render('pages/product-detail',{ prod,isAdmin })
 	} catch (error) {
-			console.log('error',error.message)
+		logger.log('error',error.message)
 	}
 })
 
@@ -153,9 +154,9 @@ const emitirChat = () => {
 (async () => {
 	await mongoose
 		.connect(dbConfig.mongo.uri)
-		.then(() => console.log(`Connecting to ${dbConfig.mongo.name}`))
+		.then(() => logger.log('info', `Connecting to ${dbConfig.mongo.name}`))
 	try {
-		const chatDB = await Chat.getById('mensajes')
+		const chatDB = await Chat.getAll()
 		if (chatDB[0] === undefined) {
 			let mensajes = {
 				id: "mensajes",
@@ -164,10 +165,7 @@ const emitirChat = () => {
 			await Chat.createChat(mensajes)
 		}
 	} catch (error) {
-		console.log({
-			error: error,
-			message: error.message
-		});
+		logger.log('error',error.message)
 	}
 })();
 
@@ -179,25 +177,25 @@ const modoCluster = process.argv[3] == 'CLUSTER'
 if (modoCluster && cluster.is) {
     const numCPUs = os.cpus().length
 
-    console.log(`Número de procesadores: ${numCPUs}`)
-    console.log(`PID MASTER ${process.pid}`)
+    logger.log('info', `Number de proc: ${numCPUs}`)
+    logger.log('info', `PID MASTER ${process.pid}`)
 
     for (let i = 0; i < numCPUs; i++) {
         cluster.fork()
     }
 
     cluster.on('exit', worker => {
-        console.log('Worker', worker.process.pid, 'exited', new Date().toLocaleString())
+        logger.log('info', 'Worker', worker.process.pid, 'exited', new Date().toLocaleString())
         cluster.fork()
     })
 } else {
 
-    console.log("Worker process iniciado");
+    logger.log('info', "Worker process initialice");
         const runningServer = server.listen(PORT,()=>{
-            console.log(`El servidor esta montado en el puerto ${PORT}`);
+            logger.log('info', `Server on ${PORT}`);
             
         })
         runningServer.on("error", (error)=>{
-            console.log(error);
+					logger.log('error',error.message)
         })
 }

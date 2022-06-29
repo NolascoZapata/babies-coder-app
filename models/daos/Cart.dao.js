@@ -1,3 +1,4 @@
+const { logger } = require('../../log/logger');
 const MongoDBContainer = require('../containers/Mongodb.container');
 const CartSchema = require('../schemas/Cart.schema');
 
@@ -20,7 +21,7 @@ class CartsDao extends MongoDBContainer {
             await cart.save()
             return cart;
         } catch (error) {
-            throw new Error(error.message);
+            logger.log('error',error.message)
         }
     }
 };

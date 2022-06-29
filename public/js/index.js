@@ -1,6 +1,4 @@
 //--------------------Products Client--------------------
-const clientProducts = () =>{
-console.log(`ejecutando`);
 const boxProd= document.getElementById('box-products-client')
 fetch('http://localhost:8080/api/products/')
 .then(response => response.json())
@@ -27,7 +25,7 @@ fetch('http://localhost:8080/api/products/')
 
     boxProd.innerHTML = respStringAll
 })
-}
+
 
 //--------------------Products admin--------------------
 const tableProd= document.getElementById('table-products-admin')
@@ -43,7 +41,7 @@ fetch('http://localhost:8080/api/products/')
                     <td>${product.size}</td>
                     <td>${product.stock}</td>
                     <td>${product.category}</td>
-                    <td><img src="${product.imgDir}" width="100px" alt="${product.name} image"></td>
+                    <td><img src="${product.imgDir}" width="150px" alt="${product.name} image"></td>
                     <td>
                         <button class="btn btn-secondary btnUpdate" data-bs-toggle="modal" data-bs-target="#updateProductModal" onClick="getProdData()">Update</button>
                         <button class="btn btn-light btn-outline-danger" onClick ="deleteProduct('${product._id}')"> Delete</button>
@@ -122,15 +120,8 @@ function enviarMensaje() {
     let date = new Date()
     let dateOutput = `${date.getHours()}:${date.getMinutes()} - ${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()} `
     const mje = {
-        author: {
-            id: document.getElementById('email-ingresado').value,
-            nombre: document.getElementById('nombre-ingresado').value,
-            apellido: document.getElementById('apellido-ingresado').value,
-            edad: document.getElementById('edad-ingresado').value,
-            alias: document.getElementById('alias-ingresado').value,
-            avatar: document.getElementById('avatar-ingresado').value,
-            date: dateOutput
-        },
+        email:document.getElementById('email-ingresado').value,
+        date: dateOutput,
         text: document.getElementById('mensaje-ingresado').value
 
     }
@@ -143,7 +134,7 @@ socket.on('chat', mjes => {
     const texto = mjes.map(mensaje => {
         return (
             `<div>
-                    <strong style="color: blue;">${mensaje.author.id}<span style="color: brown;">${mensaje.author.date}<span><span><img src=${mensaje.author.avatar} width="30px" alt=""></span></strong>
+                    <strong style="color: blue;">${mensaje.email}<span style="color: brown;">${mensaje.date}<span></strong>
                     <em style="color: green;">${mensaje.text}</em>
                     
                 </div>`)

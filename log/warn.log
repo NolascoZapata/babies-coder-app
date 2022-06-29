@@ -1,0 +1,6 @@
+[[31merror[39m] | 	[31mParameter "obj" to Document() must be an object, got [{"email":"client@gmail.com","date":"22:21 - 28/6/2022 ","text":"hola"}][39m
+[[31merror[39m] | 	[31m Can't save chat.txt[39m
+[[31merror[39m] | 	[31mParameter "obj" to Document() must be an object, got [{"email":"client@gmail.com","date":"22:21 - 28/6/2022 ","text":"hola"},{"email":"nolascozapata71@gmail.com","date":"22:24 - 28/6/2022 ","text":"hola"}][39m
+[[31merror[39m] | 	[31m Can't save chat.txt[39m
+[[31merror[39m] | 	[31mParameter "obj" to Document() must be an object, got [{"email":"client@gmail.com","date":"22:21 - 28/6/2022 ","text":"hola"},{"email":"nolascozapata71@gmail.com","date":"22:24 - 28/6/2022 ","text":"hola"},{"email":"nolascozapata71@gmail.com","date":"22:24 - 28/6/2022 ","text":"Holaaaaaa"}][39m
+[[31merror[39m] | 	[31m Can't save chat.txt[39m

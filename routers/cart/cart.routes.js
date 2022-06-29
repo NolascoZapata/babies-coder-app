@@ -11,7 +11,6 @@ const {
 router.get('/', getCartController);
 router.get('/:params',getCartByParam);
 router.post('/',saveCartController);
-router.put('/:id',updateCartController);
 router.delete('/:id',deleteCartController);
 
 module.exports = router

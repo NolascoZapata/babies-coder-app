@@ -1,6 +1,7 @@
 
 const {createTransport}= require('nodemailer');
 const password = process.env.ADMIN_EMAIL_PASSWORD;
+const { logger } = require('./../log/logger')
 const transporter = createTransport({
     service: 'gmail',
     port: 587,
@@ -25,7 +26,7 @@ const notifMailAdmin = async(notification,reason)=>{
 
         const mail = await transporter.sendMail(mailOptions)
     } catch (error) {
-        console.log(`Error:`,error);
+        logger.log('error',error.message)
     } 
 }
 module.exports = notifMailAdmin

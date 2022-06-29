@@ -20,7 +20,7 @@ class ProductsDao extends MongoDBContainer {
             await prod.save()
             return prod;
         } catch (error) {
-            throw new Error(error.message);
+            logger.log('error',error.message)
         }
     }
     async getProdByCategory(category){
@@ -33,7 +33,7 @@ class ProductsDao extends MongoDBContainer {
                 return document;
             }
         } catch (error) {
-            throw new Error(JSON.stringify(error));
+            logger.log('error',error.message)
         }
     }
 };

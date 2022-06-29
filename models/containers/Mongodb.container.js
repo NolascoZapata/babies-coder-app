@@ -1,6 +1,5 @@
-
 const mongoose = require('mongoose');
-
+const { logger } = require('../../log/logger');
 
 class MongoDBContainer {
   static instance;
@@ -14,7 +13,7 @@ class MongoDBContainer {
       return documents;
     }
     catch(error) {
-      throw new Error(JSON.stringify(error));
+      logger.log('error',error.message)
     }
   }
 
@@ -22,15 +21,16 @@ class MongoDBContainer {
     try {
       const document = await this.model.findById(id, { __v: 0 }).lean();
       if (!document) {
-        const errorMessage = `Resource with id ${id} does not exist in our records`;
-        throw new Error(JSON.stringify(errorMessage));
+        const error = `Resource with id ${id} does not exist in our records`;
+        logger.log('error',error)
+        
       } else {
         return document;
       }
     }
     catch(error) {
-      console.log(error.message);
-      throw new Error(JSON.stringify(error));
+      logger.log('error',error.message)
+      
     }
   }
 
@@ -41,8 +41,8 @@ class MongoDBContainer {
       await newItem.save();
       return newItem;
     }
-    catch (err) {
-      throw new Error(JSON.stringify(err));
+    catch (error) {
+      logger.log('error',error.message)
     }
   }
 

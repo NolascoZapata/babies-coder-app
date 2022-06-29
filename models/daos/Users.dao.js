@@ -1,3 +1,4 @@
+const { logger } = require('../../log/logger');
 const { generateAccount } = require('../../utils/accounts.utils');
 const notifMailAdmin = require('../../utils/gmail.utils');
 const { generateCart } = require('./../../utils/cart.utils')
@@ -37,28 +38,10 @@ class UsersDao extends MongoDBContainer {
             notifMailAdmin(`New user registered !`, `${user.email} just registed !`)
             return user;
         } catch (error) {
-            throw new Error(error.message);
+            logger.log('error',error.message)
         }
 
     };
-
-    // async getById(id) {
-    //     try {
-    //         const document = await this.model
-    //             .findById(id, {
-    //                 __v: 0
-    //             })
-    //             .populate('accounts').lean();
-    //         if (!document) {
-    //             const errorMessage = `Resource with id ${id} does not exist in our records`;
-    //             throw new Error(JSON.stringify(errorMessage));
-    //         } else {
-    //             return document;
-    //         }
-    //     } catch (error) {
-    //         throw new Error(JSON.stringify(error));
-    //     }
-    // }
 
     async getByEmail(email) {
         try {
@@ -70,7 +53,7 @@ class UsersDao extends MongoDBContainer {
                 return document;
             }
         } catch (error) {
-            throw new Error(JSON.stringify(error));
+            logger.log('error',error.message)
         }
     }
 }

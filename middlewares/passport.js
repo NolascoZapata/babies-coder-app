@@ -6,6 +6,7 @@ const UsersDao= require('./../models/daos/Users.dao');
 const User = new UsersDao();
 
 const { formatUserForDB } = require('../utils/users.utils');
+const { logger } = require('../log/logger');
 
 const salt = () => bCrypt.genSaltSync(10); 
 const encrypt = (password)=> bCrypt.hashSync(password,salt())
@@ -32,11 +33,12 @@ passport.use('signup',new LocalStrategy({
 		const newUser = formatUserForDB(userObject);
 		User.createUser(newUser)
 		.then((user)=>{
-			console.log('Successful registration');
+			logger.log('info', 'Successful registration');
 			return done(null,user)
 		})
 		.catch(error=>{
-			console.log('Error signing up >>>',error);
+			logger.log('error','Error signing up >>>')
+	
 			return done(error)
 		})
 	}
@@ -50,7 +52,7 @@ passport.use('signin',new LocalStrategy(
 		User.getByEmail(username)
 		.then(user=>{ 
 			if(!isValidPassword(user,password)){
-				console.log('Incorrect password');
+				logger.log('info', 'Incorrect password');
 				return done(null,false)
 			}
 			return done(null,user)
