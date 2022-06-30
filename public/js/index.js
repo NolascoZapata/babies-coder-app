@@ -35,6 +35,26 @@ const deleteUser = (id) =>{
     })
     
 }
+const addToCart = (id) =>{
+    const options = {
+        method: 'get'
+    }
+    return fetch(`/api/cart/addItem/${id}`, options)
+    .then(()=>{
+        location.reload()
+    })
+    
+}
+const deleteProdFromCart = (id) =>{
+    const options = {
+        method: 'DELETE'
+    }
+    return fetch(`/api/cart/item/${id}`, options)
+    .then(()=>{
+        location.reload()
+    })
+    
+}
 
 
 //--------------------Chat--------------------

@@ -20,7 +20,7 @@ const notifMailAdmin = async(notification,reason)=>{
         const mailOptions = {
             to: process.env.ADMIN_EMAIL,
             subject:notification,
-            html: `<h1>Se registro ${notification} : <span style="color:green;">${reason}</span></h1>`,
+            html: `<h1>New ${notification} registered: <span style="color:green;">${reason}</span></h1>`,
         
         };
 

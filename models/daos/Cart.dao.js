@@ -15,14 +15,25 @@ class CartsDao extends MongoDBContainer {
             return CartsDao.instance;
         }
     }
-    async createCart(cartItem) {
+    async getCarts() {
         try {
-            const cart = await this.createItem(cartItem);
-            await cart.save()
+            const carts = await this.getAll();
+            return carts;
+        } catch (error) {
+            logger.log('error',error.message)
+        }
+    }
+    async getCartById(id) {
+        try {
+            const cart = await this.getById(id);
             return cart;
         } catch (error) {
             logger.log('error',error.message)
         }
+    }
+    
+    async addToCart(){
+        
     }
 };
 

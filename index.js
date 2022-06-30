@@ -25,6 +25,8 @@ app.use(express.urlencoded({
 	extended: true
 }));
 app.use(express.static(path.join(__dirname, '/public')))
+const auth = require('./middlewares/auth');
+const authAdmin = require('./middlewares/authAdmin');
 
 
 //---------Session---------//
@@ -44,8 +46,6 @@ app.use(passport.session());
 
 //--------------------Routes--------------------
 app.use('/api', apiRoutes);
-
-const auth = require('./middlewares/auth');
 
 app.get('/', (req,res)=>{
 	const user =  req.user;
@@ -69,7 +69,7 @@ app.get('/profile',(req,res)=>{
 	const isAdmin =  req.user.isAdmin
 	res.render('pages/profile',{user,isAdmin})
 })
-app.get('/users',(req,res)=>{
+app.get('/users', authAdmin,(req,res)=>{
 	const user =  req.user;
 	const isAdmin =  req.user.isAdmin
 	res.render('pages/users',{user,isAdmin})
@@ -96,7 +96,6 @@ app.get('/signup-error',(req,res)=>{
 app.get('/signin-error',(req,res)=>{
 	res.redirect('/')
 })
-
 app.get('/home', auth , function (req, res) {
 	const user = req.user
 	let isAdmin
@@ -120,8 +119,16 @@ app.get('/products/:id',auth, async (req, res)=>{
 })
 app.get('/cart',(req,res)=>{
 	const user = req.user
-	res.render('pages/cart',{user})
+	const isAdmin = req.user.isAdmin
+	res.render('pages/cart',{user,isAdmin})
 })
+
+
+
+
+
+
+
 
 
 //----------------Template engine----------------

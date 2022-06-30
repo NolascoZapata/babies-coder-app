@@ -35,8 +35,7 @@
             <p class="card-text">
               Category: <%= prod.category %>
             </p>
-            <button class="btn btn-outline-secondary" type="button">Add to cart</button>
-            <input type="number" max='<%= prod.stock %>' min="1" name="" id="">
+            <button class="btn btn-outline-secondary" type="button" onclick="addToCart(<%= prod._id %>)">Add to cart</button>
           </div>
         </div>
       </div>
@@ -53,6 +52,9 @@
   <script src="/socket.io/socket.io.js"></script>
   <!-- script /public -->
   <script src="./js/index.js"></script>
+  <script>
+
+  </script>
 </body>
 
 </html>

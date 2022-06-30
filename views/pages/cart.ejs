@@ -27,7 +27,6 @@
             <th scope="col">Name</th>
             <th scope="col">Price</th>
             <th scope="col">Size</th>
-            <th scope="col">Stock</th>
             <th scope="col">Category</th>
             <th scope="col">Quantity</th>
             <th scope="col">Subtotal</th>
@@ -50,6 +49,40 @@
   <script src="/socket.io/socket.io.js"></script>
   <!-- script /public -->
   <script src="./js/index.js"></script>
+  <script>
+    fetch('http://localhost:8080/api/cart/items')
+    .then(response => response.json())
+    .then(data =>{
+      let respArrHtml = data.map(product => 
+                  `
+                  <tr>
+                      <td style="display: none">${product._id}</td>
+                      <td><img src="${product.imgDir}" width="50px" alt="${product.name} image"></td>
+                      <td scope="row">${product.name}</td>
+                      <td>${product.price}</td>
+                      <td>${product.size}</td>
+                      <td>${product.category}</td>
+                      <td>${product.quantity}</td>
+                      <td>${product.subtotal}</td>
+                      <td>
+                          <button class="btn btn-light btn-outline-danger" onClick ="deleteProdFromCart('${product._id}')"> Delete</button>
+                      </td>
+                  </tr>
+                  `
+      )
+      
+      if (respArrHtml.length === 0){
+          let emptyTable = `<div class="text-danger">No products added to cart</div>`
+          tableProd.innerHTML = emptyTable
+      }else{
+          let respStringAll = ''
+          for (let i = 0; i < respArrHtml.length; i++) {
+          respStringAll = respStringAll + respArrHtml[i]
+          }
+          tableProd.innerHTML = respStringAll
+      }
+    })
+
   </script>
 </body>
 
