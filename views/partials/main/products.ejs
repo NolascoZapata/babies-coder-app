@@ -1,9 +1,39 @@
 <h3>Available products</h3>
 
 <% if (!isAdmin){ %>
-<div id="box-products-client" class="row row-cols-1 row-cols-sm-3 row-cols-md-4 box-prod-client"></div>
+  <div id="box-products-client" class="row row-cols-1 row-cols-sm-3 row-cols-md-4 box-prod-client"></div>
+
+<script>
+    const boxProd= document.getElementById('box-products-client')
+fetch('http://localhost:8080/api/products/')
+.then(response => response.json())
+.then(data =>{
+    let respArrHtml = data.map(product => 
+                `<div class="col mb-4 card-prod-client">
+                    <div class="card h-100">
+                        <img src="${product.imgDir}" class="col-sm-6 col-lg-3 col-12" alt="${product.name} image">
+                        <div class="card-body">
+                            <h4 class="card-title">${product.name}</h4>
+                            <p class="card-text">Size: ${product.size}</p>
+                            <p class="card-text">Price: $${product.price}</p>
+                                <button class="btn btn btn-secondary"><a class="text-decoration-none text-light" href="/products/${product._id}">Details</a></button>
+                        </div>
+                    </div>
+                </div>`
+    )
+
+    let respStringAll = ''
+
+    for (let i = 0; i < respArrHtml.length; i++) {
+    respStringAll = respStringAll + respArrHtml[i]
+    }
+
+    boxProd.innerHTML = respStringAll
+})
+  </script>
 
 <% } else { %>
+
 <div style="max-width:700px ; width: 100%; margin: 50px auto 0px;">
   <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Add a new Product</button>
   <h4 class="mt-4">Products table</h4>
@@ -22,6 +52,42 @@
     </tbody>
   </table>
 </div>
+<script>
+  //--------------------Products admin--------------------
+const tableProd= document.getElementById('table-products-admin')
+fetch('http://localhost:8080/api/products/')
+.then(response => response.json())
+.then(data =>{
+  let respArrHtml = data.map(product => 
+              `
+              <tr>
+                  <td style="display: none">${product._id}</td>
+                  <td scope="row">${product.name}</td>
+                  <td>${product.price}</td>
+                  <td>${product.size}</td>
+                  <td>${product.stock}</td>
+                  <td>${product.category}</td>
+                  <td><img src="${product.imgDir}" width="150px" alt="${product.name} image"></td>
+                  <td>
+                      <button class="btn btn-secondary btnUpdate" data-bs-toggle="modal" data-bs-target="#updateProductModal" onClick="getProdData()">Update</button>
+                      <button class="btn btn-light btn-outline-danger" onClick ="deleteProduct('${product._id}')"> Delete</button>
+                  </td>
+              </tr>
+              `
+  )
+  
+  if (respArrHtml.length === 0){
+      let emptyTable = `<div class="text-danger">No products added</div>`
+      tableProd.innerHTML = emptyTable
+  }else{
+      let respStringAll = ''
+      for (let i = 0; i < respArrHtml.length; i++) {
+      respStringAll = respStringAll + respArrHtml[i]
+      }
+      tableProd.innerHTML = respStringAll
+  }
+})
+</script>
 
 <!-- New Product Modal-->
 <%- include ('./modal-NewProd') %>

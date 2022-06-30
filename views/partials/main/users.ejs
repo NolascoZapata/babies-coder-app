@@ -1,1 +1,46 @@
-<div id="users-list"></div>
+<div style="max-width:700px ; width: 100%; margin: 50px auto 0px;">
+  <h4 class="mt-4">All Users</h4>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Avatar</th>
+        <th scope="col">Name</th>
+        <th scope="col">Admin</th>
+        <th scope="col">Email</th>
+        <th scope="col">User since</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody id="users-list">
+    </tbody>
+  </table>
+</div>
+  <script>
+    //--------------------All Users--------------------
+    const users = document.getElementById('users-list')
+    fetch('http://localhost:8080/api/user/')
+      .then(response => response.json())
+      .then(data => {
+        let respArrHtml = data.map(user =>
+
+          `
+              <tr>
+                <td><img src="${user.userAvatar}" width="50px" alt="${user.name} avatar"></td>
+                  <td style="display: none">${user._id}</td>
+                  <td scope="row">${user.name}</td>
+                  <td>${user.isAdmin}</td>
+                  <td>${user.email}</td>
+                  <td>${user.createdAt}</td>
+                  <td>
+                      <button class="btn btn-light btn-outline-danger" onClick ="deleteUser('${user._id}')"> X </button>
+                  </td>
+              </tr>
+              `
+        )
+        let respStringAll = ''
+        for (let i = 0; i < respArrHtml.length; i++) {
+          respStringAll = respStringAll + respArrHtml[i]
+        }
+        users.innerHTML = respStringAll
+      })
+  </script>

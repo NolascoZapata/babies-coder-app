@@ -3,13 +3,12 @@ const router = express.Router()
 
 const {
     getCartController,
-    updateCartController,
     deleteCartController,
     saveCartController,
-    getCartByParam} = require('./../../controllers/cart.controller')
+    getCartByIdController} = require('./../../controllers/cart.controller')
 
 router.get('/', getCartController);
-router.get('/:params',getCartByParam);
+router.get('/:id',getCartByIdController);
 router.post('/',saveCartController);
 router.delete('/:id',deleteCartController);
 

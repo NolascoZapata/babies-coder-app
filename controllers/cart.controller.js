@@ -26,7 +26,6 @@ const getCartByIdController = async(req,res,next)=>{
         }
 }
 
-
 const saveCartController = async (req,res,next)=>{
     try {
         const newCart = await carts.createCart(req.body)

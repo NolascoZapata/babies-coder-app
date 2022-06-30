@@ -8,7 +8,7 @@ class OrderDao extends MongoDBContainer {
     constructor() {
         super(collection, OrderSchema);
         if (!OrderDao.instance) {
-          OrderDao.instance = this;
+            OrderDao.instance = this;
             return this;
         } else {
             return OrderDao.instance;

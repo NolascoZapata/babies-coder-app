@@ -50,6 +50,10 @@ const auth = require('./middlewares/auth');
 app.get('/', (req,res)=>{
 	const user =  req.user;
   if (user) {
+		if(req.session.cart === undefined){
+			req.session.cart = []
+		}
+		console.log(req.session.cart)
     return res.redirect('/home');
   }
   else {
@@ -64,8 +68,13 @@ app.get('/profile',(req,res)=>{
 	const user =  req.user;
 	const isAdmin =  req.user.isAdmin
 	res.render('pages/profile',{user,isAdmin})
-
 })
+app.get('/users',(req,res)=>{
+	const user =  req.user;
+	const isAdmin =  req.user.isAdmin
+	res.render('pages/users',{user,isAdmin})
+})
+
 app.get('/logout',auth,(req,res)=>{
 	req.logOut(function(err) {
 		if (err) { 
@@ -109,6 +118,10 @@ app.get('/products/:id',auth, async (req, res)=>{
 		logger.log('error',error.message)
 	}
 })
+app.get('/cart',(req,res)=>{
+	const user = req.user
+	res.render('pages/cart',{user})
+})
 
 
 //----------------Template engine----------------
@@ -149,6 +162,9 @@ io.on('connection', (socket) => {
 const emitirChat = () => {
 	io.sockets.emit('chat', chat);
 }
+
+
+
 
 //---------------Conexion mongoose---------------
 (async () => {

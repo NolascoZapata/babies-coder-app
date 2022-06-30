@@ -18,14 +18,26 @@
     <%- include('./../partials/header') %>
   </header>
   <main>
-      <h3>Welcome <%= user.name %></h3>
-  <% if (isAdmin){ %>
-    <button class="btn btn-secondary"><a href="/users">Users</a></button>  
-  <% } %>
-    
-    
-    <%- include('./../partials/main/products') %>
-
+    <div style="max-width:700px ; width: 100%; margin: 50px auto 0px;">
+      <h4 class="mt-4">Cart table</h4>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Image</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Size</th>
+            <th scope="col">Stock</th>
+            <th scope="col">Category</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Subtotal</th>
+                  </tr>
+        </thead>
+        <tbody id="table-cart-client">
+        </tbody>
+      </table>
+      <button class="btn btn-secondary">Buy items</button>
+    </div>
   </main>
   <footer class="d-flex justify-content-center align-content-end mt-5">
     <%- include ('./../partials/footer') %>

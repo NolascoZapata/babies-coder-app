@@ -18,14 +18,7 @@
     <%- include('./../partials/header') %>
   </header>
   <main>
-      <h3>Welcome <%= user.name %></h3>
-  <% if (isAdmin){ %>
-    <button class="btn btn-secondary"><a href="/users">Users</a></button>  
-  <% } %>
-    
-    
-    <%- include('./../partials/main/products') %>
-
+    <%- include('./../partials/main/users') %>
   </main>
   <footer class="d-flex justify-content-center align-content-end mt-5">
     <%- include ('./../partials/footer') %>
@@ -36,6 +29,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
   <!-- Socket script -->
   <script src="/socket.io/socket.io.js"></script>
+  <!-- Sweet Alert CDN -->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <!-- script /public -->
   <script src="./js/index.js"></script>
   </script>

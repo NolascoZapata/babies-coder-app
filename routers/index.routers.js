@@ -4,6 +4,7 @@ const prodRoutes = require('./products/products.routes');
 const userRoutes = require('./users/users.routes')
 const authRoutes = require ('./auth/auth.routes')
 const infoRoutes = require ('./info/info.routes')
+const cartRoutes = require ('./cart/cart.routes')
 
 
 //middlewares
@@ -15,6 +16,7 @@ router.use(express.urlencoded({extended: true}))
 router.use('/products', prodRoutes)
 router.use('/user', userRoutes)
 router.use('/auth',authRoutes)
+router.use('/cart',cartRoutes)
 router.use ('/info', infoRoutes)
 
 
