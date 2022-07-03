@@ -6,3 +6,16 @@
 [[31merror[39m] | 	[31m Can't save chat.txt[39m
 [[31merror[39m] | 	[31mResource with id undefined does not exist in our records[39m
 [[31merror[39m] | 	[31mResource with id undefined does not exist in our records[39m
+[[31merror[39m] | 	[31mCast to ObjectId failed for value "{ id: '62ba7e25a35170884d0e9584' }" (type Object) at path "_id" for model "products"[39m
+[[31merror[39m] | 	[31mCast to ObjectId failed for value "{ _id: { id: '62ba7e25a35170884d0e9584' } }" (type Object) at path "_id" for model "products"[39m
+[[31merror[39m] | 	[31mCast to ObjectId failed for value "{ _id: { id: '62ba7e25a35170884d0e9584' } }" (type Object) at path "_id" for model "products"[39m
+[[31merror[39m] | 	[31mCast to ObjectId failed for value "{ _id: { id: '62ba7e25a35170884d0e9584' } }" (type Object) at path "_id" for model "products"[39m
+[[31merror[39m] | 	[31mCast to ObjectId failed for value "[object Object]" (type string) at path "_id" for model "products"[39m
+[[31merror[39m] | 	[31mCast to ObjectId failed for value "[object Object]" (type string) at path "_id" for model "products"[39m
+[[31merror[39m] | 	[31mCast to ObjectId failed for value "[object Object]" (type string) at path "_id" for model "products"[39m
+[[31merror[39m] | 	[31mCast to ObjectId failed for value "[object Object]" (type string) at path "_id" for model "products"[39m
+[[31merror[39m] | 	[31mResource with id 62c216d173c785ed4bca5c0b does not exist in our records[39m
+[[31merror[39m] | 	[31mResource with id 62c216d173c785ed4bca5c0b does not exist in our records[39m
+[[31merror[39m] | 	[31mResource with id 62c216d173c785ed4bca5c0b does not exist in our records[39m
+[[31merror[39m] | 	[31mResource with id 62c216d173c785ed4bca5c0b does not exist in our records[39m
+[[31merror[39m] | 	[31mResource with id 62c216d173c785ed4bca5c0b does not exist in our records[39m

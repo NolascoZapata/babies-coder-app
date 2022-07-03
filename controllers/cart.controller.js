@@ -51,46 +51,49 @@ const deleteCartController = async (req,res,next)=>{
     }
 }
 
-const addItemCartController = async(req,res,bext)=>{    
+const addItemCartController = async(req,res,next)=>{   
         const cart = req.session.cart;
-        const product_id = req.params;
-        products.findOne({_id: product_id})
-                .then(item => {
-                    if (item) {
-                        const pos = verif(cart, product_id);
-                        if (pos == -1) {
-                            const data = {
-                                id: item.id,
-                                name: item.name,
-                                quantity: 1,
-                                price: item.price,
-                                category: item.category,
-                                size:item.size,
-                                imgDir:item.imgDir,
-                                subtotal: item.price
-                                
-                            };
-                            cart.push(data);
-                        } else {
-                            const data = cart[pos];
-                            data.quantity = data.quantity + 1;
-                            data.subtotal = data.price * data.quantity;
-                            cart[pos] = data;
-                        }
-                        req.session.cart = cart;
-                        console.log(req.session.cart);
-                        res.status(200).json(req.session.cart);
+        const product_id = req.params.id;
+        await products.getById(product_id)
+            .then(item => {
+                if (item) {
+                    const pos = cart.indexOf(cart.find(el=>el.id==product_id))
+                    if (pos == -1) {
+                        const data = {
+                            id: item._id,
+                            name: item.name,
+                            quantity: 1,
+                            price: item.price,
+                            category: item.category,
+                            size:item.size,
+                            imgDir:item.imgDir,
+                            subtotal: item.price
+                        };
+                        cart.push(data);
                     } else {
-                        res.status(500).json(`Can't add item to cart `);
+                        const data = cart[pos];
+                        data.quantity = data.quantity + 1;
+                        data.subtotal = data.price * data.quantity;
+                        cart[pos] = data;
                     }
-                }).catch(err => {
-            res.status(500).json(err);
-        });
+                    req.session.cart = cart;               
+                    res.status(200).json(req.session.cart);
+                } else {
+                    res.status(500).json(`Can't add item to cart `);
+                }
+            }).catch(err => {
+        res.status(500).json(err);
+    });
+    let cartId = req.user.cart
+    let selectedCart = await carts.getById(cartId)
+    let itemsCart = selectedCart.items
+    itemsCart.push(cart);
+    await carts.model.findByIdAndUpdate({_id:cartId},{items:itemsCart})
 }
 const deleteItemOnCartController = (req,res)=>{
         const cart = req.session.cart;
-        const product_id = req.params;
-        const pos = verif(cart, product_id);
+        const product_id = req.params.id;
+        const pos = cart.indexOf(cart.find(el=>el.id==product_id))
         const data = cart[pos];
         if (data.quantity > 1) {
             data.quantity = data.quantity - 1;
@@ -99,27 +102,23 @@ const deleteItemOnCartController = (req,res)=>{
             req.session.cart = cart;
             res.status(200).json(req.session.cart);
         } else {
-            const aux = [];            
-            for(const i = 0; i < cart.length; i++) {
-                const items = cart[i];
-                if(items.product_id != product_id) {
+            let aux=[]
+            for(let i = 0; i < cart.length; i++) {
+                let items = cart[i];
+                if(items.id != product_id) {
                     aux.push(items);
                 }
             }
             req.session.cart = aux;
             res.status(200).json(req.session.cart);
         }
+        let cartId = req.user.cart
+        let selectedCart = await carts.getById(cartId)
+        let itemsCart = selectedCart.items
+        itemsCart.push(cart);
+        await carts.model.findByIdAndUpdate({_id:cartId},{items:itemsCart})
 }
-const verif = (list, product_id) => {
-    const pos = -1;
-    for (const i = 0; i < list.length; i++) {
-        if (list[i].id == product_id) {
-            pos = i;
-            break;
-        }
-    }
-    return pos;
-}
+
 const getItems = (req, res)=>{
     res.status(200).json(req.session.cart);
 }

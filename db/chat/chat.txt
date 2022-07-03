@@ -1,1 +1,1 @@
-[{"email":"client@gmail.com","date":"22:39 - 28/6/2022 ","text":"hola!"},{"email":"nolascozapata71@gmail.com","date":"22:39 - 28/6/2022 ","text":"hola!!"}]
+[{"email":"nolascozapata71@gmail.com","date":"10:29 - 1/7/2022 ","text":"Hola!"}]

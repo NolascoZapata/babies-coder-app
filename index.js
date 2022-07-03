@@ -16,6 +16,8 @@ require('dotenv').config()
 /////////
 const ProdDao = require('./models/daos/Product.dao')
 const products = new ProdDao()
+const CartsDao = require('./models/daos/Cart.dao');
+const CartDao = new CartsDao()
 /////////
 
 //--------------------Middlewares--------------------
@@ -50,10 +52,6 @@ app.use('/api', apiRoutes);
 app.get('/', (req,res)=>{
 	const user =  req.user;
   if (user) {
-		if(req.session.cart === undefined){
-			req.session.cart = []
-		}
-		console.log(req.session.cart)
     return res.redirect('/home');
   }
   else {
@@ -65,13 +63,16 @@ app.get('/register', function (req, res) {
 })
 
 app.get('/profile',(req,res)=>{
-	const user =  req.user;
-	const isAdmin =  req.user.isAdmin
+	let isAdmin
+	req.user.isAdmin === "true" ? isAdmin=true : isAdmin= false;
+	const user = req.user
+
 	res.render('pages/profile',{user,isAdmin})
 })
 app.get('/users', authAdmin,(req,res)=>{
-	const user =  req.user;
-	const isAdmin =  req.user.isAdmin
+	let isAdmin
+	req.user.isAdmin === "true" ? isAdmin=true : isAdmin= false;
+	const user = req.user
 	res.render('pages/users',{user,isAdmin})
 })
 
@@ -101,14 +102,22 @@ app.get('/home', auth , function (req, res) {
 	let isAdmin
 	req.user.isAdmin === "true" ? isAdmin=true : isAdmin= false;
 	
+	if(req.session.cart === undefined){
+		req.session.cart = []
+	}
+
 	res.render('pages/home',{user,isAdmin});
 })
-app.get('/newProduct',auth, (req, res)=>{
+app.get('/newProduct',authAdmin, (req, res)=>{
 	const isAdmin = req.user.isAdmin
 	res.render('pages/newProduct',{isAdmin})
 })
 app.get('/products/:id',auth, async (req, res)=>{
 	const {id} = req.params
+	const cart_id = req.user.cart
+	const cart_list = await CartDao.getById(cart_id)
+	req.session.cart_list = cart_list
+	
 	const isAdmin = req.user.isAdmin
 	try {
 		const prod = await products.getById(id)
@@ -117,9 +126,11 @@ app.get('/products/:id',auth, async (req, res)=>{
 		logger.log('error',error.message)
 	}
 })
-app.get('/cart',(req,res)=>{
+app.get('/cart',auth,(req,res)=>{
+	
+	let isAdmin
+	req.user.isAdmin === "true" ? isAdmin=true : isAdmin= false;
 	const user = req.user
-	const isAdmin = req.user.isAdmin
 	res.render('pages/cart',{user,isAdmin})
 })
 
@@ -160,7 +171,7 @@ io.on('connection', (socket) => {
 				}
 			})
 		} catch (error) {
-			console.log(`No se pudo guardar el chat en chat.txt`, error)
+			logger.log('error',`No se pudo guardar el chat en chat.txt`)
 		}
 		emitirChat();
 	})

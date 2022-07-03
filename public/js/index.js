@@ -35,19 +35,10 @@ const deleteUser = (id) =>{
     })
     
 }
-const addToCart = (id) =>{
-    const options = {
-        method: 'get'
-    }
-    return fetch(`/api/cart/addItem/${id}`, options)
-    .then(()=>{
-        location.reload()
-    })
-    
-}
+
 const deleteProdFromCart = (id) =>{
     const options = {
-        method: 'DELETE'
+        method: 'GET'
     }
     return fetch(`/api/cart/item/${id}`, options)
     .then(()=>{
@@ -59,34 +50,34 @@ const deleteProdFromCart = (id) =>{
 
 //--------------------Chat--------------------
 //Socket.io 
-const socket = io();
-function enviarMensaje() {
-    let date = new Date()
-    let dateOutput = `${date.getHours()}:${date.getMinutes()} - ${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()} `
-    const mje = {
-        email:document.getElementById('email-ingresado').value,
-        date: dateOutput,
-        text: document.getElementById('mensaje-ingresado').value
+// const socket = io();
+// function enviarMensaje() {
+//     let date = new Date()
+//     let dateOutput = `${date.getHours()}:${date.getMinutes()} - ${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()} `
+//     const mje = {
+//         email:document.getElementById('email-ingresado').value,
+//         date: dateOutput,
+//         text: document.getElementById('mensaje-ingresado').value
 
-    }
-    socket.emit('incomingMessage', mje)
-    document.getElementById('mensaje-ingresado').value = ''
-}
+//     }
+//     socket.emit('incomingMessage', mje)
+//     document.getElementById('mensaje-ingresado').value = ''
+// }
 
 
-socket.on('chat', mjes => {
-    const texto = mjes.map(mensaje => {
-        return (
-            `<div>
-                    <strong style="color: blue;">${mensaje.email}<span style="color: brown;">${mensaje.date}<span></strong>
-                    <em style="color: green;">${mensaje.text}</em>
+// socket.on('chat', mjes => {
+//     const texto = mjes.map(mensaje => {
+//         return (
+//             `<div>
+//                     <strong style="color: blue;">${mensaje.email}<span style="color: brown;">${mensaje.date}<span></strong>
+//                     <em style="color: green;">${mensaje.text}</em>
                     
-                </div>`)
-    }).join('')
+//                 </div>`)
+//     }).join('')
     
-    let boxMensajes = document.getElementById('box-mensajes')
-    boxMensajes.innerHTML = texto
-})
+//     let boxMensajes = document.getElementById('box-mensajes')
+//     boxMensajes.innerHTML = texto
+// })
 
 
 
