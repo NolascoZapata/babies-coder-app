@@ -1,6 +1,6 @@
+const { logger } = require('../../log/logger');
 const MongoDBContainer = require('./../containers/Mongodb.container');
 const ProductSchema = require('./../schemas/Product.schema');
-
 const collection = 'products';
 
 class ProductsDao extends MongoDBContainer {
@@ -21,6 +21,7 @@ class ProductsDao extends MongoDBContainer {
             return prod;
         } catch (error) {
             logger.log('error',error.message)
+            logger.log('error',`Error creating product`)
         }
     }
     async getProdByCategory(category){

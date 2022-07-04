@@ -90,7 +90,7 @@ const addItemCartController = async(req,res,next)=>{
     itemsCart.push(cart);
     await carts.model.findByIdAndUpdate({_id:cartId},{items:itemsCart})
 }
-const deleteItemOnCartController = (req,res)=>{
+const deleteItemOnCartController = async (req,res)=>{
         const cart = req.session.cart;
         const product_id = req.params.id;
         const pos = cart.indexOf(cart.find(el=>el.id==product_id))

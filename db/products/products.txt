@@ -1,0 +1,182 @@
+[
+   {
+      "name":"Conjunto 1",
+      "price":2500,
+      "size":" 0-3 months ",
+      "stock":10,
+      "timestamp":"2020-06-13T11:42:48.242Z",
+      "category":"baby",
+      "imgDir":"https://i.ibb.co/3N0V9xB/bebes31.jpg"
+   },
+   {
+      "name":"Conjunto 2 ",
+      "price":3500,
+      "size":"0-3 months",
+      "stock":10,
+      "timestamp":"2020-06-13T11:42:48.242Z",
+      "category":"baby",
+      "imgDir":"https://i.ibb.co/P1cqTKc/bebes32.jpg"
+   },
+   {
+      "name":"Conjunto 3",
+      "price":3500,
+      "size":"0-3 months",
+      "stock":10,
+      "timestamp":"2020-06-13T11:42:48.242Z",
+      "category":"baby",
+      "imgDir":"https://i.ibb.co/y4MF1yg/bebes33.jpg"
+   },
+   {
+      "name":"Pijama para bebé varón",
+      "price":1800,
+      "size":"6-9 months",
+      "stock":10,
+      "timestamp":"2020-06-13T11:42:48.242Z",
+      "category":"baby",
+      "imgDir":"https://i.ibb.co/0VMRFSH/bebes61.jpg"
+   },
+   {
+      "name":"Pijama para bebé varón",
+      "price":2000,
+      "size":"6-9 months",
+      "stock":10,
+      "timestamp":"2020-06-13T11:42:48.242Z",
+      "category":"baby",
+      "imgDir":"https://i.ibb.co/9pN09Nv/bebes62.jpg"
+   },
+   {
+      "name":"Pijama para bebé nena",
+      "price":2000,
+      "size":"6-9 months",
+      "stock":10,
+      "timestamp":"2020-06-13T11:42:48.242Z",
+      "category":"baby",
+      "imgDir":"https://i.ibb.co/8MrZRj9/bebes63.jpg"
+   },
+   {
+      "name":"Conjunto para bebé ",
+      "price":3500,
+      "size":"9-12 months",
+      "stock":10,
+      "timestamp":"2020-06-13T11:42:48.242Z",
+      "category":"baby",
+      "imgDir":"https://i.ibb.co/r2gPw8g/bebes91.jpg"
+   },
+   {
+      "name":"Conjunto para bebé nena ",
+      "price":3000,
+      "size":"9-12 months ",
+      "stock":10,
+      "timestamp":"2020-06-13T11:42:48.242Z",
+      "category":"baby",
+      "imgDir":"https://i.ibb.co/prKZ6hz/bebes92.jpg"
+   },
+   {
+      "name":"Producto",
+      "price":3000,
+      "size":"9-12 months ",
+      "stock":10,
+      "timestamp":"2020-06-13T11:42:48.242Z",
+      "category":"girl",
+      "imgDir":"https://i.ibb.co/gPYSdQF/girl2.jpg"
+   },
+   {
+      "name":"Producto",
+      "price":3000,
+      "size":"9-12 months ",
+      "stock":10,
+      "timestamp":"2020-06-13T11:42:48.242Z",
+      "category":"girl",
+      "imgDir":"https://i.ibb.co/3r6RJPy/girl1.jpg"
+   },
+   {
+      "name":"Producto",
+      "price":3000,
+      "size":"9-12 months ",
+      "stock":10,
+      "timestamp":"2020-06-13T11:42:48.242Z",
+      "category":"girl",
+      "imgDir":"https://i.ibb.co/pfm80P2/girl3.jpg"
+   },
+   {
+      "name":"Producto",
+      "price":3000,
+      "size":"9-12 months ",
+      "stock":10,
+      "timestamp":"2020-06-13T11:42:48.242Z",
+      "category":"girl",
+      "imgDir":"https://i.ibb.co/FwHkS8F/girl4.jpg"
+   },
+   {
+      "name":"Producto",
+      "price":3000,
+      "size":"9-12 months ",
+      "stock":10,
+      "timestamp":"2020-06-13T11:42:48.242Z",
+      "category":"girl",
+      "imgDir":"https://i.ibb.co/pfm80P2/girl3.jpg"
+   },
+   {
+      "name":"Producto",
+      "price":3000,
+      "size":"9-12 months ",
+      "stock":10,
+      "timestamp":"2020-06-13T11:42:48.242Z",
+      "category":"girl",
+      "imgDir":"https://i.ibb.co/FwHkS8F/girl4.jpg"
+   },
+   {
+      "name":"Producto",
+      "price":3000,
+      "size":"9-12 months ",
+      "stock":10,
+      "timestamp":"2020-06-13T11:42:48.242Z",
+      "category":"girl",
+      "imgDir":"https://i.ibb.co/3r6RJPy/girl1.jpg"
+   },
+   {
+      "name":"Producto",
+      "price":3000,
+      "size":"9-12 months ",
+      "stock":10,
+      "timestamp":"2020-06-13T11:42:48.242Z",
+      "category":"girl",
+      "imgDir":"https://i.ibb.co/gPYSdQF/girl2.jpg"
+   },
+   {
+      "name":"Producto",
+      "price":3000,
+      "size":"9-12 months ",
+      "stock":10,
+      "timestamp":"2020-06-13T11:42:48.242Z",
+      "category":"boy",
+      "imgDir":"https://i.ibb.co/C770w5j/boy2.jpg"
+   },
+   {
+      "name":"Producto",
+      "price":3000,
+      "size":"9-12 months ",
+      "stock":10,
+      "timestamp":"2020-06-13T11:42:48.242Z",
+      "category":"boy",
+      "imgDir":"https://i.ibb.co/qdc92W1/boy1.jpg"
+   },
+   {
+      "name":"Producto",
+      "price":3000,
+      "size":"9-12 months ",
+      "stock":10,
+      "timestamp":"2020-06-13T11:42:48.242Z",
+      "category":"boy",
+      "imgDir":"https://i.ibb.co/9nqYFWq/boy4.jpg"
+   },
+   {
+      "name":"Producto",
+      "price":3000,
+      "size":"9-12 months ",
+      "stock":10,
+      "timestamp":"2020-06-13T11:42:48.242Z",
+      "category":"boy",
+      "imgDir":"https://i.ibb.co/G2BzXcz/boy3.jpg"
+   }
+]

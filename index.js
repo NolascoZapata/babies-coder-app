@@ -52,6 +52,7 @@ app.use('/api', apiRoutes);
 app.get('/', (req,res)=>{
 	const user =  req.user;
   if (user) {
+		signInError = false
     return res.redirect('/home');
   }
   else {
@@ -92,7 +93,11 @@ app.get('/chat',auth, function (req, res) {
 	res.render('pages/chat',{isAdmin,user});
 })
 app.get('/signup-error',(req,res)=>{
-	res.render('pages/register')
+	if( req.session.signUpError === undefined){
+		req.session.signUpError = true
+	}
+	let signUpError = req.session.signUpError
+	res.render('pages/register',{signUpError})
 })
 app.get('/signin-error',(req,res)=>{
 	res.redirect('/')
@@ -163,12 +168,7 @@ io.on('connection', (socket) => {
 		let newChatJSON = JSON.stringify(chat)
 		try {
 			fs.promises.writeFile('./db/chat/chat.txt', newChatJSON)
-			await Chat.model.updateOne({
-				id: 'mensajes'
-			}, {
-				$set: {
-					mensajes: newChatJSON
-				}
+			await Chat.model.updateOne({id: 'mensajes'}, {$set: {mensajes: newChatJSON}
 			})
 		} catch (error) {
 			logger.log('error',`No se pudo guardar el chat en chat.txt`)
@@ -191,13 +191,25 @@ const emitirChat = () => {
 		.then(() => logger.log('info', `Connecting to ${dbConfig.mongo.name}`))
 	try {
 		const chatDB = await Chat.getAll()
+		const prodDB = await products.getAll()
 		if (chatDB[0] === undefined) {
 			let mensajes = {
 				id: "mensajes",
 				mensajes: JSON.stringify(chat)
 			};
 			await Chat.createChat(mensajes)
+		
 		}
+		//No products on DB , use text archive
+		if (prodDB === undefined) {
+			let prods = JSON.parse(await fs.promises.readFile('./db/products/products.txt','utf-8'))
+			for (let i = 0; i < prods.length; i++) {
+				const element = prods[i];
+				await products.createProduct(element)
+			}
+		}
+
+
 	} catch (error) {
 		logger.log('error',error.message)
 	}

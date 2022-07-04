@@ -48,37 +48,5 @@ const deleteProdFromCart = (id) =>{
 }
 
 
-//--------------------Chat--------------------
-//Socket.io 
-// const socket = io();
-// function enviarMensaje() {
-//     let date = new Date()
-//     let dateOutput = `${date.getHours()}:${date.getMinutes()} - ${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()} `
-//     const mje = {
-//         email:document.getElementById('email-ingresado').value,
-//         date: dateOutput,
-//         text: document.getElementById('mensaje-ingresado').value
-
-//     }
-//     socket.emit('incomingMessage', mje)
-//     document.getElementById('mensaje-ingresado').value = ''
-// }
-
-
-// socket.on('chat', mjes => {
-//     const texto = mjes.map(mensaje => {
-//         return (
-//             `<div>
-//                     <strong style="color: blue;">${mensaje.email}<span style="color: brown;">${mensaje.date}<span></strong>
-//                     <em style="color: green;">${mensaje.text}</em>
-                    
-//                 </div>`)
-//     }).join('')
-    
-//     let boxMensajes = document.getElementById('box-mensajes')
-//     boxMensajes.innerHTML = texto
-// })
-
-
 
 

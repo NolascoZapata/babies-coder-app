@@ -19,3 +19,32 @@
 [[31merror[39m] | 	[31mResource with id 62c216d173c785ed4bca5c0b does not exist in our records[39m
 [[31merror[39m] | 	[31mResource with id 62c216d173c785ed4bca5c0b does not exist in our records[39m
 [[31merror[39m] | 	[31mResource with id 62c216d173c785ed4bca5c0b does not exist in our records[39m
+[[31merror[39m] | 	[31mUnexpected token o in JSON at position 1[39m
+[[31merror[39m] | 	[31mCallback must be a function. Received 'utf-8'[39m
+[[31merror[39m] | 	[31mE11000 duplicate key error collection: e-commerce.products index: imgDir_1 dup key: { imgDir: "https://i.ibb.co/pfm80P2/girl3.jpg" }[39m
+[[31merror[39m] | 	[31mlogger is not defined[39m
+[[31merror[39m] | 	[31mE11000 duplicate key error collection: e-commerce.products index: imgDir_1 dup key: { imgDir: "https://i.ibb.co/pfm80P2/girl3.jpg" }[39m
+[[31merror[39m] | 	[31mCannot read properties of undefined (reading 'save')[39m
+[[31merror[39m] | 	[31mError creating product[39m
+[[31merror[39m] | 	[31mE11000 duplicate key error collection: e-commerce.products index: imgDir_1 dup key: { imgDir: "https://i.ibb.co/FwHkS8F/girl4.jpg" }[39m
+[[31merror[39m] | 	[31mCannot read properties of undefined (reading 'save')[39m
+[[31merror[39m] | 	[31mError creating product[39m
+[[31merror[39m] | 	[31mE11000 duplicate key error collection: e-commerce.products index: imgDir_1 dup key: { imgDir: "https://i.ibb.co/3r6RJPy/girl1.jpg" }[39m
+[[31merror[39m] | 	[31mCannot read properties of undefined (reading 'save')[39m
+[[31merror[39m] | 	[31mError creating product[39m
+[[31merror[39m] | 	[31mE11000 duplicate key error collection: e-commerce.products index: imgDir_1 dup key: { imgDir: "https://i.ibb.co/gPYSdQF/girl2.jpg" }[39m
+[[31merror[39m] | 	[31mCannot read properties of undefined (reading 'save')[39m
+[[31merror[39m] | 	[31mError creating product[39m
+[[31merror[39m] | 	[31mE11000 duplicate key error collection: e-commerce.products index: imgDir_1 dup key: { imgDir: "https://i.ibb.co/pfm80P2/girl3.jpg" }[39m
+[[31merror[39m] | 	[31mCannot read properties of undefined (reading 'save')[39m
+[[31merror[39m] | 	[31mError creating product[39m
+[[31merror[39m] | 	[31mE11000 duplicate key error collection: e-commerce.products index: imgDir_1 dup key: { imgDir: "https://i.ibb.co/FwHkS8F/girl4.jpg" }[39m
+[[31merror[39m] | 	[31mCannot read properties of undefined (reading 'save')[39m
+[[31merror[39m] | 	[31mError creating product[39m
+[[31merror[39m] | 	[31mE11000 duplicate key error collection: e-commerce.products index: imgDir_1 dup key: { imgDir: "https://i.ibb.co/3r6RJPy/girl1.jpg" }[39m
+[[31merror[39m] | 	[31mCannot read properties of undefined (reading 'save')[39m
+[[31merror[39m] | 	[31mError creating product[39m
+[[31merror[39m] | 	[31mE11000 duplicate key error collection: e-commerce.products index: imgDir_1 dup key: { imgDir: "https://i.ibb.co/gPYSdQF/girl2.jpg" }[39m
+[[31merror[39m] | 	[31mCannot read properties of undefined (reading 'save')[39m
+[[31merror[39m] | 	[31mError creating product[39m
+[[31merror[39m] | 	[31m"Wrong username"[39m
