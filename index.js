@@ -17,7 +17,7 @@ require('dotenv').config()
 const ProdDao = require('./models/daos/Product.dao')
 const products = new ProdDao()
 const CartsDao = require('./models/daos/Cart.dao');
-const CartDao = new CartsDao()
+const carts = new CartsDao()
 /////////
 
 //--------------------Middlewares--------------------
@@ -102,14 +102,23 @@ app.get('/signup-error',(req,res)=>{
 app.get('/signin-error',(req,res)=>{
 	res.redirect('/')
 })
-app.get('/home', auth , function (req, res) {
+app.get('/home', auth , async (req, res) => {
 	const user = req.user
 	let isAdmin
 	req.user.isAdmin === "true" ? isAdmin=true : isAdmin= false;
-	
+	let totalCart= 0 
 	if(req.session.cart === undefined){
-		req.session.cart = []
+		let selectedCart = await carts.getById(req.user.cart);
+    let itemsCart = selectedCart.items;
+		req.session.cart = itemsCart;
+		
 	}
+	for (let i = 0; i < req.session.cart.length; i++) {
+		let element = req.session.cart[i].subtotal;
+		totalCart = totalCart + element
+	}
+	req.session.totalCart = totalCart
+	
 
 	res.render('pages/home',{user,isAdmin});
 })
@@ -119,9 +128,6 @@ app.get('/newProduct',authAdmin, (req, res)=>{
 })
 app.get('/products/:id',auth, async (req, res)=>{
 	const {id} = req.params
-	const cart_id = req.user.cart
-	const cart_list = await CartDao.getById(cart_id)
-	req.session.cart_list = cart_list
 	
 	const isAdmin = req.user.isAdmin
 	try {
@@ -131,12 +137,13 @@ app.get('/products/:id',auth, async (req, res)=>{
 		logger.log('error',error.message)
 	}
 })
-app.get('/cart',auth,(req,res)=>{
+app.get('/cart',auth, (req,res)=>{
 	
 	let isAdmin
 	req.user.isAdmin === "true" ? isAdmin=true : isAdmin= false;
 	const user = req.user
-	res.render('pages/cart',{user,isAdmin})
+	let totalCart = req.session.totalCart
+	res.render('pages/cart',{user,isAdmin,totalCart})
 })
 
 
@@ -228,7 +235,7 @@ if (modoCluster && cluster.is) {
 
     for (let i = 0; i < numCPUs; i++) {
         cluster.fork()
-    }
+    };
 
     cluster.on('exit', worker => {
         logger.log('info', 'Worker', worker.process.pid, 'exited', new Date().toLocaleString())

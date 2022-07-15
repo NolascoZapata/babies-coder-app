@@ -1,4 +1,3 @@
-
 const { logger } = require('../log/logger')
 const ProductsDao = require('../models/daos/Product.dao')
 const CartDao = require('./../models/daos/Cart.dao')
@@ -86,9 +85,18 @@ const addItemCartController = async(req,res,next)=>{
     });
     let cartId = req.user.cart
     let selectedCart = await carts.getById(cartId)
-    let itemsCart = selectedCart.items
-    itemsCart.push(cart);
+    let itemsCart = selectedCart.items;
+    itemsCart = cart;
+
     await carts.model.findByIdAndUpdate({_id:cartId},{items:itemsCart})
+
+    let totalCart = req.session.totalCart
+    for (let i = 0; i < req.session.cart.length; i++) {
+		let element = req.session.cart[i].subtotal;
+		totalCart = totalCart + element
+        req.session.totalCart = totalCart
+	}
+	
 }
 const deleteItemOnCartController = async (req,res)=>{
         const cart = req.session.cart;
@@ -112,14 +120,21 @@ const deleteItemOnCartController = async (req,res)=>{
             req.session.cart = aux;
             res.status(200).json(req.session.cart);
         }
+
         let cartId = req.user.cart
         let selectedCart = await carts.getById(cartId)
         let itemsCart = selectedCart.items
-        itemsCart.push(cart);
+        itemsCart = cart;
         await carts.model.findByIdAndUpdate({_id:cartId},{items:itemsCart})
+        let totalCart = req.session.totalCart
+        for (let i = 0; i < req.session.cart.length; i++) {
+		let element = req.session.cart[i].subtotal;
+		totalCart = totalCart + element
+        req.session.totalCart = totalCart
+	}
 }
 
-const getItems = (req, res)=>{
+const getItems = async(req, res)=>{
     res.status(200).json(req.session.cart);
 }
 

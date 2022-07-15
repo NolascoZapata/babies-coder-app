@@ -35,7 +35,7 @@ class UsersDao extends MongoDBContainer {
             user.cart = [cart._id]
             user.accounts = [account._id];
             await user.save();
-            notifMailAdmin(`user`, `${user.email} just registed !`)
+            //notifMailAdmin(`user`, `${user.email} just registed !`)
             return user;
         } catch (error) {
             logger.log('error',error.message)

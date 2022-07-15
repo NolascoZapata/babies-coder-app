@@ -1,4 +1,8 @@
 const { logger } = require("../log/logger");
+const AccountsDao = require("../models/daos/Account.dao");
+const Accounts= new AccountsDao()
+const CartsDao = require("../models/daos/Cart.dao");
+const Carts = new CartsDao()
 const UsersDao = require("../models/daos/Users.dao");
 const Users = new UsersDao()
 
@@ -58,12 +62,10 @@ const updateUserController = async (req, res, next) => {
 }
 const deleteUserController = async (req, res, next) => {
     try {
-        const {
-            id
-        } = req.params.id
-        const deletedUser = await Users.model.deleteOne({
-            id: +id
-        })
+        const {id} = req.params.id
+        const deletedUser = await Users.model.deleteOne({id: +id})
+        // await Carts.model.deleteOne({owner:+id})
+        // await Accounts.model.deleteOne({owner:+id})
         logger.log('info', `[DELETE]==> User with id ${+id}`)
         res.json(deletedUser)
     } catch (error) {

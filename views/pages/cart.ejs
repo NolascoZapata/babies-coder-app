@@ -18,7 +18,7 @@
   </header>
   <main>
     <div style="max-width:700px ; width: 100%; margin: 50px auto 0px;">
-      <h4 class="mt-4">Cart table</h4>
+      <h4 class="mt-4">Cart</h4>
       <table class="table">
         <thead>
           <tr>
@@ -36,7 +36,7 @@
         <tfoot>
           <tr>
             <td>Total :</td>
-            <td>$</td>
+            <td>$ <%= totalCart %></td>
           </tr>
         </tfoot>
       </table>
@@ -62,7 +62,7 @@
     .then(data =>{
       let respArrHtml = data.map(product => 
                   `
-                  <tr>
+                  <tr> 
                       <td style="display: none">${product.id}</td>
                       <td><img src="${product.imgDir}" width="50px" alt="${product.name} image"></td>
                       <td scope="row">${product.name}</td>
@@ -89,6 +89,7 @@
           cartTable.innerHTML = respStringAll
       }
     })
+    
 
   </script>
 </body>

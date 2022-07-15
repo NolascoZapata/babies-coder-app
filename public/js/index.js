@@ -10,7 +10,6 @@ const getProdData = () => {
         update_ProdImgUrl.value = row.children[6].innerHTML
 })
 }
-
 const deleteProduct = (id) =>{
     const options = {
         method: 'DELETE'
@@ -35,7 +34,6 @@ const deleteUser = (id) =>{
     })
     
 }
-
 const deleteProdFromCart = (id) =>{
     const options = {
         method: 'GET'
@@ -46,6 +44,19 @@ const deleteProdFromCart = (id) =>{
     })
     
 }
+
+const checkPassword = ()=>{
+    let pass1 = document.getElementById('password').value
+    let pass2 = document.getElementById('password2').value
+    if (pass1 == pass2)
+    null
+    else
+    swal(`Passwords dont match ! Please check them`,{
+        icon: "error",
+        button : true,
+    })
+}
+
 
 
 
