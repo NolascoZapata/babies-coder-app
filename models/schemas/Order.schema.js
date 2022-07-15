@@ -11,6 +11,6 @@ const OrderSchema = new Schema({
     updatedAt: { type: Date, required: true },
     status:{type: String}
     }
-);
+)
 
 module.exports = OrderSchema;

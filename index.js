@@ -48,7 +48,6 @@ app.use(passport.session());
 
 //--------------------Routes--------------------
 app.use('/api', apiRoutes);
-
 app.get('/', (req,res)=>{
 	const user =  req.user;
   if (user) {
@@ -62,7 +61,6 @@ app.get('/', (req,res)=>{
 app.get('/register', function (req, res) {
 	res.render('pages/register');
 })
-
 app.get('/profile',(req,res)=>{
 	let isAdmin
 	req.user.isAdmin === "true" ? isAdmin=true : isAdmin= false;
@@ -76,7 +74,12 @@ app.get('/users', authAdmin,(req,res)=>{
 	const user = req.user;
 	res.render('pages/users',{user,isAdmin})
 })
-
+app.get('/orders', authAdmin,(req,res)=>{
+	let isAdmin
+	req.user.isAdmin === "true" ? isAdmin=true : isAdmin= false;
+	const user = req.user;
+	res.render('pages/orders',{user,isAdmin})
+})
 app.get('/logout',auth,(req,res)=>{
 	req.logOut(function(err) {
 		if (err) { 
@@ -93,11 +96,7 @@ app.get('/chat',auth, function (req, res) {
 	res.render('pages/chat',{isAdmin,user});
 })
 app.get('/signup-error',(req,res)=>{
-	if( req.session.signUpError === undefined){
-		req.session.signUpError = true
-	}
-	let signUpError = req.session.signUpError
-	res.render('pages/register',{signUpError})
+	res.redirect('/register')
 })
 app.get('/signin-error',(req,res)=>{
 	res.redirect('/')
@@ -138,11 +137,16 @@ app.get('/products/:id',auth, async (req, res)=>{
 	}
 })
 app.get('/cart',auth, (req,res)=>{
-	
 	let isAdmin
 	req.user.isAdmin === "true" ? isAdmin=true : isAdmin= false;
 	const user = req.user
-	let totalCart = req.session.totalCart
+	let totalCart =0
+	for (let i = 0; i < req.session.cart.length; i++) {
+		let element = req.session.cart[i].subtotal;
+		totalCart = totalCart + element
+	}
+	req.session.totalCart = totalCart
+	
 	res.render('pages/cart',{user,isAdmin,totalCart})
 })
 

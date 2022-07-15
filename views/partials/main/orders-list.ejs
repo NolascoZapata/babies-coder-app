@@ -1,0 +1,52 @@
+<div style="max-width:700px ; width: 100%; margin: 50px auto 0px;">
+  <h4 class="mt-4">All Users</h4>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Order</th>
+        <th scope="col">User's email</th>
+        <th scope="col">Items added</th>
+        <th scope="col">Created at</th>
+        <th scope="col">Check</th>
+      </tr>
+    </thead>
+    <tbody id="orders-list">
+    </tbody>
+  </table>
+</div>
+<script>
+  //--------------------All Orders--------------------
+  const ordersList = document.getElementById('orders-list')
+  fetch('http://localhost:8080/api/orders/')
+    .then(response => response.json())
+    .then(data => {
+      let orders = data.filter(o => o.order_number !== "0")
+      let respArrHtml = orders.map(order =>
+
+        `
+              <tr>
+                <td style="display: none">${order._id}</td>
+                <td>1</td>
+                  <td>${order.owner_email}</td>
+                  <td>${order.items.length}</td>
+                  <td>${order.createdAt}</td>
+                  <td>
+                      <button class="btn btn-success" onClick ="deleteOrder('${order._id}')"> &#10004 </button>
+                  </td>
+              </tr>
+              `
+      )
+
+
+      if (respArrHtml.length === 0) {
+        let emptyTable = `<div class="text-danger">No orders </div>`
+        ordersList.innerHTML = emptyTable
+      } else {
+        let respStringAll = ''
+        for (let i = 0; i < respArrHtml.length; i++) {
+          respStringAll = respStringAll + respArrHtml[i]
+        }
+        ordersList.innerHTML = respStringAll
+      }
+    })
+</script>

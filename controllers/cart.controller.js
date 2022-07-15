@@ -17,7 +17,7 @@ const getCartController = async (req,res,next)=>{
 }
 
 const getCartByIdController = async(req,res,next)=>{
-    let {params} = req.params
+    let {params} = req.params.id
         try {
             const cart = await carts.getById(params)
             logger.log('info',`[GET]==> Get Cart with id '${params}'`)

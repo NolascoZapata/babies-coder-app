@@ -44,6 +44,33 @@ const deleteProdFromCart = (id) =>{
     })
     
 }
+const saveOrder= ()=>{
+    const options = {
+        method: 'GET'
+    }
+    return fetch(`/api/orders/addOrder`, options)
+    .then(()=>{
+        swal('Order Created',{
+            icon: "success",
+            button : false
+        })
+        window.location.href = '/home'
+    })
+    .catch(error =>console.log(error.message))
+}
+const deleteOrder= (id) =>{
+    const options = {
+        method: 'DELETE'
+    }
+    return fetch(`/api/orders/deleteOrder/${id}`, options)
+    .then(()=>{
+        swal('Order Deleted',{
+            icon: "success",
+            button : false
+        })
+        location.reload()
+    })
+}
 
 const checkPassword = ()=>{
     let pass1 = document.getElementById('password').value

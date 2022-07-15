@@ -32,9 +32,6 @@ class CartsDao extends MongoDBContainer {
         }
     }
     
-    async addToCart(){
-        
-    }
 };
 
 module.exports = CartsDao;

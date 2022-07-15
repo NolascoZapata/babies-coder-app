@@ -8,7 +8,8 @@ const formatUserForDB = (userObj) => {
     createdAt: new Date(),
     updatedAt: new Date(),
     accounts: null,
-    cart:null
+    cart:null,
+    orders:null
   };
   return newUser;
 };

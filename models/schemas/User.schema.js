@@ -20,6 +20,7 @@ const UserSchema = new Schema({
     updatedAt: { type: Date, required: true },
     accounts: { type: Schema.Types.ObjectId, ref: "Account" },
     cart : { type: Schema.Types.ObjectId, ref: "Cart" },
+    orders: { type: Schema.Types.ObjectId, ref: "Order" }
     }
 );
 UserSchema.index({ email: 1 });
