@@ -65,3 +65,7 @@
 [[31merror[39m] | 	[31mResource with id 62d172f6ab30dfc370818445 does not exist in our records[39m
 [[31merror[39m] | 	[31mResource with id 62d17609556efa5059ed8291 does not exist in our records[39m
 [[31merror[39m] | 	[31mResource with id 62d1784340e918ea9ebbe4a1 does not exist in our records[39m
+[[31merror[39m] | 	[31mCast to ObjectId failed for value "NaN" (type number) at path "_id" for model "users"[39m
+[[31merror[39m] | 	[31mCast to ObjectId failed for value "{ id: '62d17b3e3fcc020b8fa25c6d' }" (type Object) at path "_id" for model "users"[39m
+[[31merror[39m] | 	[31mCast to ObjectId failed for value "NaN" (type number) at path "owner" for model "cart"[39m
+[[31merror[39m] | 	[31mdeletedUser is not defined[39m

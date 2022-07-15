@@ -73,7 +73,7 @@ app.get('/profile',(req,res)=>{
 app.get('/users', authAdmin,(req,res)=>{
 	let isAdmin
 	req.user.isAdmin === "true" ? isAdmin=true : isAdmin= false;
-	const user = req.user
+	const user = req.user;
 	res.render('pages/users',{user,isAdmin})
 })
 

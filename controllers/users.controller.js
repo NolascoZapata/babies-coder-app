@@ -62,12 +62,12 @@ const updateUserController = async (req, res, next) => {
 }
 const deleteUserController = async (req, res, next) => {
     try {
-        const {id} = req.params.id
-        const deletedUser = await Users.model.deleteOne({id: +id})
-        // await Carts.model.deleteOne({owner:+id})
-        // await Accounts.model.deleteOne({owner:+id})
-        logger.log('info', `[DELETE]==> User with id ${+id}`)
-        res.json(deletedUser)
+        const id = req.params.id
+        const deletedUser = await Users.model.deleteOne({_id:id})
+        await Carts.model.deleteOne({owner:id})
+        await Accounts.model.deleteOne({owner:id})
+        logger.log('info', `[DELETE]==> User with id ${id}`)
+        res.json(id)
     } catch (error) {
         logger.log('error',error.message)
         next(error)
