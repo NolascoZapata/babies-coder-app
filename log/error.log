@@ -10,3 +10,14 @@
 [[31merror[39m] | 	[31mCannot read properties of undefined (reading '_id')[39m
 [[31merror[39m] | 	[31mE11000 duplicate key error collection: e-commerce.orders index: order_number_1 dup key: { order_number: "0" }[39m
 [[31merror[39m] | 	[31mCannot read properties of undefined (reading '_id')[39m
+[[31merror[39m] | 	[31mE11000 duplicate key error collection: e-commerce.orders index: order_number_1 dup key: { order_number: "0" }[39m
+[[31merror[39m] | 	[31mCannot read properties of undefined (reading '_id')[39m
+[[31merror[39m] | 	[31mE11000 duplicate key error collection: e-commerce.users index: email_1 dup key: { email: "lens@gmail.com" }[39m
+[[31merror[39m] | 	[31mCannot read properties of undefined (reading '_id')[39m
+[[31merror[39m] | 	[31mE11000 duplicate key error collection: e-commerce.orders index: order_number_1 dup key: { order_number: "0" }[39m
+[[31merror[39m] | 	[31mCannot read properties of undefined (reading '_id')[39m
+[[31merror[39m] | 	[31mE11000 duplicate key error collection: e-commerce.orders index: order_number_1 dup key: { order_number: "0" }[39m
+[[31merror[39m] | 	[31mCannot read properties of undefined (reading '_id')[39m
+[[31merror[39m] | 	[31mE11000 duplicate key error collection: e-commerce.orders index: order_number_1 dup key: { order_number: "0" }[39m
+[[31merror[39m] | 	[31mCannot read properties of undefined (reading '_id')[39m
+[[31merror[39m] | 	[31mrandomNumber is not defined[39m

@@ -54,6 +54,7 @@ const addOrderController = async (req, res, next) => {
     const cart = req.session.cart;
     const cartId = req.user.cart
     const orderId = req.user.orders
+    
     const dbOrders = await Orders.getById(orderId)
     let orderStatus = dbOrders.status
     orderStatus = "generated"
